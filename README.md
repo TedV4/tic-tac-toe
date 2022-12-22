@@ -1,0 +1,1 @@
+The goal of this project is to create a 2-player Tic Tac Toe game for the browser. The purpose of this exercise is to practice minimizing global code by using modules and factory functions.
