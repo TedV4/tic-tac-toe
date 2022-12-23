@@ -13,20 +13,34 @@ const Player = (marker) => {
 const player1 = Player("X");
 const player2 = Player("O");
 
-const displayController = (() => {
+const Game = (() => {
   const gameBoard = document.querySelector(".grid-container");
-  const initBoard = () => {
+
+  let turn = 0;
+  let currentPlayer = player1;
+
+  function getCurrentPlayer() {
+    if (turn == 0 || turn % 2 == 0) {
+      currentPlayer = player1;
+    } else {
+      currentPlayer = player2;
+    }
+  }
+
+  const startGame = () => {
     for (let i = 0; i < 9; i++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
       //Create a game function to sub here
       cell.addEventListener('click', function() {
-        cell.textContent = player1.marker;
+        cell.textContent = currentPlayer.marker;
+        turn++;
+        getCurrentPlayer();
       })
       gameBoard.appendChild(cell);
     }
   };
-  return { gameBoard, initBoard };
+  return { gameBoard, startGame };
 })();
 
-displayController.initBoard();
+Game.startGame();
