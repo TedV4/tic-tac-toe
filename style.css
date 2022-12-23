@@ -9,7 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
-  background: white;
+  background: whitesmoke;
 }
 
 .grid-container {
@@ -25,7 +25,8 @@ body {
 
 .cell {
   display: flex;
-  background: white;
+  background: whitesmoke;
+  color: darkslateblue;
   justify-content: center;
   align-items: center;
   font-size: 6em;
