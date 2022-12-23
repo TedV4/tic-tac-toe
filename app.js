@@ -1,6 +1,6 @@
 //Manage DOM elements
 const displayController = (() => {
-  const cells = document.querySelectorAll(".cells");
+  const cells = document.querySelectorAll(".cell");
   const gameInfo = document.querySelector(".game-info");
   const restartBtn = document.querySelector(".restartBtn");
 
@@ -24,23 +24,54 @@ const gameLogic = (() => {
     [2, 4, 6],
   ];
 
+  //Apply logic to DOM elements
   function initGame() {
     displayController.cells.forEach((cell) =>
       cell.addEventListener("click", cellClicked)
     );
     displayController.restartBtn.addEventListener("click", restartGame);
+    console.log(displayController.cells)
+    displayController.gameInfo.textContent = `${currentPlayer}'s turn`;
     running = true;
   }
+  
+  //If a cell is empty and the game is running, continue to mark the clicked cell
+  function cellClicked() {
+    const cellIndex = this.getAttribute("cellIndex");
 
-  function cellClicked() {}
+    if (coordinates[cellIndex] != "" || !running) {
+      return;
+    }
 
-  function updateCell(cell, index) {}
+    updateCell(this, cellIndex);
+    checkWinner();
+  }
 
-  function changePlayer() {}
+  function updateCell(cell, index) {
+    coordinates[index] = currentPlayer;
+    cell.textContent = currentPlayer;
+  }
+
+  function changePlayer() {
+    currentPlayer = (currentPlayer == 'X' ? 'O' : 'X');
+    displayController.gameInfo.textContent = `${currentPlayer}'s turn`;
+  }
+
+  function checkWinner() {
+    let roundComplete = false;
+
+    
+  }
 
   function restartGame() {}
 
   function playRound() {
     initGame();
   }
+
+  return {
+    playRound,
+  };
 })();
+
+gameLogic.playRound();
