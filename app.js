@@ -3,8 +3,9 @@ const displayController = (() => {
   const cells = document.querySelectorAll(".cell");
   const gameInfo = document.querySelector(".game-info");
   const restartBtn = document.querySelector(".restartBtn");
+  const scorebox = document.querySelector(".scorebox");
 
-  return { cells, gameInfo, restartBtn };
+  return { cells, gameInfo, restartBtn, scorebox };
 })();
 
 //Manage game logic
@@ -12,6 +13,7 @@ const gameLogic = (() => {
   let coordinates = ["", "", "", "", "", "", "", "", ""];
   let currentPlayer = "X";
   let running = false;
+  let roundCount = 0;
 
   const winConditions = [
     [0, 1, 2],
