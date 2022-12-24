@@ -21,8 +21,8 @@ body {
 }
 
 .grid-container {
-  height: 20em;
-  width: 20em;
+  height: 24em;
+  width: 24em;
   background-color: lightgrey;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -40,9 +40,21 @@ body {
   cursor: pointer;
 }
 
+.game-display {
+   display: flex;
+   flex-direction: row;
+   gap: 1em;
+}
+.scorebox {
+  font-size: 2em;
+  font-weight: bold;
+  align-self: center;
+}
+
 .game-info {
   padding: 1em;
   font-size: 1em;
+  color: black;
 }
 
 .restartBtn {
