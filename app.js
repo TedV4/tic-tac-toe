@@ -14,6 +14,9 @@ const gameLogic = (() => {
   let currentPlayer = "X";
   let running = false;
   let roundCount = 0;
+  let xScore = 0;
+  let oScore = 0;
+  displayController.scorebox.textContent = `${xScore} - ${oScore}`;
 
   const winConditions = [
     [0, 1, 2],
@@ -78,6 +81,8 @@ const gameLogic = (() => {
     }
 
     if (roundComplete === true) {
+      updateScore(currentPlayer);
+      updateScorebox();
       displayController.gameInfo.textContent = `${currentPlayer} wins!`;
       running = false;
     } else if (!coordinates.includes("")) {
@@ -86,6 +91,15 @@ const gameLogic = (() => {
     } else {
       changePlayer();
     }
+  }
+
+  function updateScore(winner) {
+    winner == "X" ? xScore++ : oScore++;
+    roundCount++;
+  }
+
+  function updateScorebox() {
+    displayController.scorebox.textContent = `${xScore} - ${oScore}`;
   }
 
   function restartGame() {
